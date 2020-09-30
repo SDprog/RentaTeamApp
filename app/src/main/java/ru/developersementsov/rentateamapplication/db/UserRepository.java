@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
+import io.reactivex.Flowable;
 import ru.developersementsov.rentateamapplication.model.User;
 
 public class UserRepository {
@@ -19,7 +20,7 @@ public class UserRepository {
         mAllUsers = mUserDao.getAllUsers();
     }
 
-    LiveData<List<User>> getAllUsers() {
+    public LiveData<List<User>> getAllUsers() {
         return mAllUsers;
     }
 
