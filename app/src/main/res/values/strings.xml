@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">RentaTeam Application</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about">Тестовое задание для Rentateam</string>
+    <string name="title_about">О Программе</string>
+    <string name="title_users_list">Пользователи</string>
+</resources>
