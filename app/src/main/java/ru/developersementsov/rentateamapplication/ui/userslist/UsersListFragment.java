@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,11 +19,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import ru.developersementsov.rentateamapplication.R;
+import ru.developersementsov.rentateamapplication.db.UserDB;
 import ru.developersementsov.rentateamapplication.recycler.UsersAdapter;
 import ru.developersementsov.rentateamapplication.model.AnswersResponse;
 import ru.developersementsov.rentateamapplication.model.User;
 import ru.developersementsov.rentateamapplication.retrofit.ApiUtils;
 import ru.developersementsov.rentateamapplication.retrofit.UsersApi;
+import ru.developersementsov.rentateamapplication.ui.about.AboutFragment;
 import ru.developersementsov.rentateamapplication.ui.user.UserActivity;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -33,6 +36,7 @@ public class UsersListFragment extends Fragment {
     private UsersAdapter mAdapter;
     private RecyclerView mRecyclerView;
     private UsersApi usersApi;
+    UserDB userDB;
 
     public UsersListFragment() {
     }
@@ -51,12 +55,20 @@ public class UsersListFragment extends Fragment {
                 new UsersAdapter.UserClickListener() {
 
                     @Override
-                    public void onUserClick(long id) {
+                    public void onUserClick(long id, String firstName, String lastName, String email, String avatar) {
                         Toast.makeText(getActivity(), "User id is " + id, Toast.LENGTH_SHORT).show();
+
                         Intent intent = new Intent(getActivity(), UserActivity.class);
-                        intent.putExtra("userID", id);
+
+                        intent.putExtra("firstName", firstName);
+                        intent.putExtra("lastName", lastName);
+                        intent.putExtra("email", email);
+                        intent.putExtra("avatar", avatar);
+
                         startActivity(intent);
                     }
+
+
                 });
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());

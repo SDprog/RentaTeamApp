@@ -33,7 +33,8 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
         @Override
         public void onClick(View view) {
             User user = getItem(getAdapterPosition());
-            this.mItemListener.onUserClick(user.getId());
+            this.mItemListener.onUserClick(user.getId(), user.getFirstName(), user.getLastName(),
+                    user.getEmail(), user.getAvatar());
 
             //notifyDataSetChanged();
         }
@@ -80,6 +81,6 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.ViewHolder> 
     }
 
     public interface UserClickListener {
-        void onUserClick(long id);
+        void onUserClick(long id, String firstName, String lastName, String email, String avatar);
     }
 }
