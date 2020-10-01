@@ -10,7 +10,8 @@
 Приложение написано на Java. 
 Retrofit для запросов к серверу.
 Room для кэширования.
-Picasso для работы с изображениями
+Picasso для работы с изображениями.
 
-![Иллюстрация к проекту](https://github.com/SDprog/RentaTeamApp/raw/master/src/main/res/drawable/rt1.jpg)
-![Иллюстрация к проекту](https://github.com/SDprog/RentaTeamApp/raw/master/src/main/res/drawable/rt1.jpg)
+
+![Иллюстрация к проекту](https://github.com/SDprog/RentaTeamApp/raw/master/app/src/main/res/drawable/rt1.jpg)
+![Иллюстрация к проекту](https://github.com/SDprog/RentaTeamApp/raw/master/app/src/main/res/drawable/rt2.jpg)
