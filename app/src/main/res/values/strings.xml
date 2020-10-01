@@ -5,4 +5,5 @@
     <string name="about">Тестовое задание для Rentateam</string>
     <string name="title_about">О Программе</string>
     <string name="title_users_list">Пользователи</string>
+    <string name="photo">Photo</string>
 </resources>

@@ -64,7 +64,7 @@ public abstract class UserDB extends RoomDatabase {
             // Start the app with a clean database every time.
             // Not needed if you only populate the database
             // when it is first created
-            mDao.deleteAll();
+           // mDao.deleteAll();
 
 //            for (int i = 0; i <= users.length - 1; i++) {
 //                User user = new User(users[i]);

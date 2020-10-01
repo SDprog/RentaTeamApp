@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,7 +40,8 @@ public class UsersListFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private UsersApi usersApi;
     private UserViewModel userViewModel;
-
+    private View root;
+    ProgressBar progressBar;
 
     public UsersListFragment() {
     }
@@ -51,7 +53,8 @@ public class UsersListFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_users_list, container, false);
+        root = inflater.inflate(R.layout.fragment_users_list, container, false);
+        progressBar = root.findViewById(R.id.progressBar);
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
 
         usersApi = ApiUtils.getUsersApi();
@@ -85,6 +88,7 @@ public class UsersListFragment extends Fragment {
         loadUsers();
 
         return root;
+
     }
 
     public void loadUsers() {
@@ -93,6 +97,8 @@ public class UsersListFragment extends Fragment {
                     @Override
                     public void onCompleted() {
                        // showComplitedMessage();
+                        progressBar.setVisibility(ProgressBar.INVISIBLE);
+
                     }
 
                     @Override
@@ -104,6 +110,7 @@ public class UsersListFragment extends Fragment {
                             @Override
                             public void onChanged(@Nullable List<User> users) {
                                 mAdapter.updateAnswers(users);
+                                progressBar.setVisibility(ProgressBar.INVISIBLE);
                             }
                         });
 
@@ -114,7 +121,8 @@ public class UsersListFragment extends Fragment {
                         for (User user : answersResponse.getUsers()
                         ) {
                             userViewModel.insert(user);
-                            Log.d("MainActivity", "add user " + user.getFirstName());
+                            Log.d("MainActivity", "add to db user " + user.getFirstName()
+                                  + " "+ user.getLastName());
                         }
                         mAdapter.updateAnswers(answersResponse.getUsers());
                     }
@@ -123,7 +131,7 @@ public class UsersListFragment extends Fragment {
     }
 
     public void showErrorMessage() {
-        Toast.makeText(getActivity(), "Error loading from API, Load from DataBase", Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "Error loading from API, Load Users from DataBase", Toast.LENGTH_LONG).show();
     }
 
     public void showComplitedMessage() {

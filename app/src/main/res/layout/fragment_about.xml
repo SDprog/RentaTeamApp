@@ -12,7 +12,15 @@
         android:gravity="center"
         android:text="@string/about"
         android:textAlignment="center"
-        android:textColor="#F4511E"
+        android:textColor="@android:color/holo_orange_dark"
         android:textSize="30sp"
         android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_orange_dark"
+        android:contentDescription="@string/photo"
+        android:src="@drawable/rent" />
 </FrameLayout>
